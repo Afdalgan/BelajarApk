@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Item ML</string>
+
+    <string name="item_name">Nama Item</string>
+    <string name="description">Deskripsi Item</string>
+    <string name="about">About</string>
+    <string name="email">cikoh546@gmail.com</string>
+    <string name="nama">Muh. Afdal Ziqri Ramadhan</string>
+    <string name="atribut">Physical Attack:</string>
+    <string-array name="data_attributes">
+        <item>+40% Critical Damage</item>
+        <item>+70 Physical Attack</item>
+        <item>+160 Physical Attack</item>
+        <item>+70 Physical Attack</item>
+        <item>+50 Physical Attack</item>
+        <item>+35 Physical Attack</item>
+        <item>+65 Physical Attack</item>
+        <item>+60 Physical Attack</item>
+        <item>+65 Physical Attack</item>
+        <item>+70 Physical Attack</item>
+    </string-array>
+
+    <string-array name="data_name">
+        <item>Berseker\'s Fury</item>
+        <item>Blood Axe</item>
+        <item>Blade od Despair</item>
+        <item>Blade of Heptaseas</item>
+        <item>Corrosion Scythe</item>
+        <item>Demon Huter Sword</item>
+        <item>Endles Battle</item>
+        <item>Great Dragon Spear</item>
+        <item>Golden Staff</item>
+        <item>Haas\'s Claws</item>
+    </string-array>
+    <string-array name="data_description">
+        <item>Item Berserker\'s Fury meningkatkan Critical Chance dan Critical Damage. Dengan item ini, setiap serangan kritis akan memberikan tambahan kerusakan yang lebih besar. Biasanya digunakan oleh hero dengan tipe Marksman atau Assassin yang mengandalkan serangan fisik kritis.</item>
+        <item>Item Bloodlust Axe memberikan Physical Attack, Cooldown Reduction, dan Spell Vamp. Spell Vamp memungkinkan hero untuk memulihkan HP berdasarkan kerusakan yang diberikan oleh skill, cocok untuk hero yang sering menggunakan skill aktif.</item>
+        <item>Blade of Despair (BoD) adalah salah satu item serangan fisik terkuat di Mobile Legends. Item ini memberikan Physical Attack yang sangat besar, dan meningkatkan kerusakan saat menyerang musuh yang HP-nya di bawah 50%. Biasanya digunakan oleh Assassin atau Marksman untuk memberikan burst damage tinggi.</item>
+        <item>Blade of Heptaseas memberikan Physical Attack, Cooldown Reduction, dan Physical Penetration. Keunikan item ini adalah memberikan tambahan kerusakan fisik pada serangan dasar berikutnya jika tidak diserang atau menyerang selama beberapa detik. Cocok untuk hero yang membutuhkan burst damage di awal serangan.</item>
+        <item>Corrosion Scythe meningkatkan Attack Speed dan Physical Attack. Efek uniknya adalah memperlambat pergerakan musuh saat serangan dasar mengenai target. Cocok untuk Marksman yang membutuhkan efek slow dan serangan yang lebih cepat.</item>
+        <item>Demon Hunter Sword memberikan Physical Attack dan Attack Speed. Efek uniknya adalah memberikan kerusakan tambahan berdasarkan HP musuh, menjadikannya sangat efektif melawan hero dengan HP tebal. Biasanya digunakan oleh Marksman atau hero dengan serangan cepat.</item>
+        <item>Endless Battle memberikan berbagai atribut seperti Physical Attack, Mana Regen, Life Steal, Cooldown Reduction, Movement Speed, dan True Damage pasif setelah menggunakan skill. Ini item serba guna yang sangat popular di kalangan Fighter dan Marksman yang mengandalkan serangan dasar setelah menggunakan skill.</item>
+        <item>Great Dragon Spear memberikan atribut penting seperti Physical Attack, Cooldown Reduction, dan Critical Chance. Efek pasif unik dari item ini memberikan tambahan 7% Movement Speed setiap kali hero menggunakan ultimate. Item ini sangat cocok untuk hero yang mengandalkan serangan fisik dengan ultimate, memberikan kombinasi kerusakan tinggi dan mobilitas yang lebih baik setelah menggunakan skill pamungkas.</item>
+        <item>Golden Staff adalah item yang meningkatkan Attack Speed. Keunikan dari item ini adalah mengubah Critical Chance menjadi Attack Speed, serta memungkinkan hero untuk mengaktifkan efek pasif dari serangan dasar lebih cepat. Biasanya digunakan oleh hero yang mengandalkan serangan dasar beruntun, seperti Marksman.</item>
+        <item>Haas\'s Claws memberikan Physical Attack dan Life Steal. Efek Life Steal-nya sangat besar, dan jika HP hero di bawah 40%, Life Steal akan semakin meningkat. Item ini sangat berguna untuk hero yang mengandalkan serangan dasar dan membutuhkan kemampuan bertahan hidup dalam pertempuran.</item>
+
+    </string-array>
+    <integer-array name="data_photo">
+        <item>@drawable/bersekers</item>
+        <item>@drawable/blood_axe</item>
+        <item>@drawable/bod</item>
+        <item>@drawable/boh</item>
+        <item>@drawable/corrosion</item>
+        <item>@drawable/dhs</item>
+        <item>@drawable/endless</item>
+        <item>@drawable/gds</item>
+        <item>@drawable/golden_staff</item>
+        <item>@drawable/haas_claw</item>
+    </integer-array>
+</resources>
