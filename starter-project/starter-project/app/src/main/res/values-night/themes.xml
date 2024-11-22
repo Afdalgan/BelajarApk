@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme for Dark Mode. -->
+    <style name="Base.Theme.Asclepius.Dark" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">@color/pastel_green_dark</item>
+        <item name="colorPrimaryContainer">@color/pastel_green_primary</item>
+        <item name="colorSecondary">@color/pastel_accent_dark</item>
+        <item name="colorSecondaryContainer">@color/pastel_green_primary</item>
+        <item name="android:colorAccent">@color/pastel_accent_dark</item>
+        <item name="android:colorBackground">@color/pastel_green_dark_background</item>
+
+        <!-- Warna teks dan elemen lainnya untuk Dark Mode -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#CCCCCC</item>
+        <item name="android:statusBarColor">@color/pastel_green_dark</item>
+        <item name="android:navigationBarColor">@color/pastel_green_dark</item>
+    </style>
+
+    <style name="Theme.Asclepius.Dark" parent="Base.Theme.Asclepius.Dark" />
+</resources>

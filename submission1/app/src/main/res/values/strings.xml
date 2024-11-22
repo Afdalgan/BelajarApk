@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Dicoding Event</string>
+    <string name="title_home">Home</string>
+    <string name="title_finished">Finished</string>
+    <string name="title_upcoming">Upcoming</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_setting">Setting</string>
+    <string name="title_theme">Dark Mode</string>
+    <string name="title_description">Turn On Dark Mode</string>
+    <string name="title_description2">Turn Off Dark Mode</string>
+
+    <string name="home_title_upcoming">Upcoming Event</string>
+    <string name="home_title_finished">Finished Event</string>
+
+    <string name="btn_register">Register</string>
+    <string name="searchbar_hint">Cari Event</string>
+
+    <string name="organizer">Penyelenggara : </string>
+    <string name="time">Waktu Kegiatan : </string>
+    <string name="quota">Kuota : </string>
+    <string name="error_message_here">Error message here</string>
+    <string name="favorite_events">Favorite</string>
+</resources>

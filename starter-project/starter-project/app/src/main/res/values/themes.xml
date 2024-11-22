@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Asclepius" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/pastel_green_dark1</item>
+        <item name="colorPrimaryContainer">@color/pastel_green_light</item>
+        <item name="colorSecondary">@color/pastel_accent</item>
+        <item name="colorSecondaryContainer">@color/pastel_green_light</item>
+        <item name="android:colorAccent">@color/pastel_accent</item>
+        <item name="android:colorBackground">@color/pastel_green_light</item>
+
+        <!-- Warna teks dan elemen lainnya -->
+        <item name="android:textColorPrimary">#333333</item>
+        <item name="android:textColorSecondary">#666666</item>
+        <item name="android:statusBarColor">@color/pastel_green_dark1</item>
+        <item name="android:navigationBarColor">@color/pastel_green_dark1</item>
+    </style>
+
+    <style name="Theme.Asclepius" parent="Base.Theme.Asclepius" />
+</resources>

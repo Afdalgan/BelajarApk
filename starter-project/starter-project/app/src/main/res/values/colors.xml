@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="pastel_green_primary">#97D2AF</color>
+    <color name="pastel_green_dark1">#7BB893</color>
+    <color name="pastel_green_light">#E6F4E8</color>
+    <color name="pastel_accent">#9ECF92</color>
+    <color name="pastel_green_dark">#2A604A</color>
+    <color name="pastel_green_dark_background">#1E4938</color>
+
+    <!-- Dark accent color for secondary elements in dark mode -->
+    <color name="pastel_accent_dark">#3E6D5A</color>
+</resources>
