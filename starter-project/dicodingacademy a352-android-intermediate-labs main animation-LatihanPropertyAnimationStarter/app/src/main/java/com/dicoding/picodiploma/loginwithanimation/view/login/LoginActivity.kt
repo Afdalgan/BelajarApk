@@ -47,16 +47,16 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
-            val email = binding.emailEditText.text.toString().trim()
-            val password = binding.passwordEditText.text.toString().trim()
+            val email = binding.edLoginEmail.text.toString().trim()
+            val password = binding.edLoginPassword.text.toString().trim()
 
             if (email.isEmpty()) {
-                binding.emailEditText.error = "Email tidak boleh kosong"
+                binding.edLoginEmail.error = "Email tidak boleh kosong"
                 return@setOnClickListener
             }
 
             if (password.isEmpty()) {
-                binding.passwordEditText.error = "Password tidak boleh kosong"
+                binding.edLoginPassword.error = "Password tidak boleh kosong"
                 return@setOnClickListener
             }
 

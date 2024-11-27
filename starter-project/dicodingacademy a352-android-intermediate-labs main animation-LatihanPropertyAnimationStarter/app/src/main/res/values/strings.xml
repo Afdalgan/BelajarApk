@@ -15,5 +15,7 @@
     <string name="logout">Keluar</string>
     <string name="password_hint">Masukkan Password Anda</string>
     <string name="password_too_short">Password tidak boleh kurang dari 8 karakter</string>
+    <string name="deskripsi">Deskripsi story</string>
+    <string name="story_name">Nama Story</string>
 
 </resources>

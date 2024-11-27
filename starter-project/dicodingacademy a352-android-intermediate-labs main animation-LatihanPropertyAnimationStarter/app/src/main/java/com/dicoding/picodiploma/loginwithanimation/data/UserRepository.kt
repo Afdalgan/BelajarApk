@@ -6,11 +6,17 @@ import com.dicoding.picodiploma.loginwithanimation.data.pref.UserPreference
 import com.dicoding.picodiploma.loginwithanimation.data.response.LoginResponse
 import com.dicoding.picodiploma.loginwithanimation.data.response.RegisterResponse
 import com.dicoding.picodiploma.loginwithanimation.data.response.StoryItem
+import com.dicoding.picodiploma.loginwithanimation.data.response.UploudResponse
 import com.dicoding.picodiploma.loginwithanimation.data.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.first
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
+import retrofit2.Response
+
 
 class UserRepository private constructor(
     private val userPreference: UserPreference,
@@ -46,6 +52,29 @@ class UserRepository private constructor(
     suspend fun logout() {
         userPreference.logout()
     }
+
+    suspend fun uploadImage(
+        token: String,
+        imageFile: File,
+        description: String,
+    ): Result<UploudResponse> {
+        return try {
+            val requestFile = imageFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val body = MultipartBody.Part.createFormData("photo", imageFile.name, requestFile)
+            val descriptionBody = description.toRequestBody("text/plain".toMediaTypeOrNull())
+
+            val response = apiService.uploadImage(
+                "Bearer $token",
+                body,
+                descriptionBody
+            )
+            Result.Success(response)
+        } catch (e: Exception) {
+            Log.e("UploadError", "An error occurred", e)
+            Result.Error("An error occurred: ${e.localizedMessage}")
+        }
+    }
+
 
     companion object {
         @Volatile

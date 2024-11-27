@@ -1,6 +1,9 @@
 package com.dicoding.picodiploma.loginwithanimation.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import retrofit2.http.POST
 
 data class StoriesResponse(
 	@field:SerializedName("error")
@@ -13,6 +16,7 @@ data class StoriesResponse(
 	val listStory: List<StoryItem>
 )
 
+@Parcelize
 data class StoryItem(
 	@field:SerializedName("id")
 	val id: String,
@@ -34,4 +38,4 @@ data class StoryItem(
 
 	@field:SerializedName("lon")
 	val lon: Double? = null
-)
+) : Parcelable
