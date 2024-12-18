@@ -1,21 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LoginWithAnimation</string>
-    <string name="signup">Daftar</string>
-    <string name="login">Masuk</string>
-    <string name="message_welcome_page">Mau belajar Android, iOS, Machine Learning, Cloud, Front-End, Back-End, dan bidang IT lainnya? Di Dicoding aja!</string>
-    <string name="title_welcome_page">Selamat datang di Dicoding!</string>
-    <string name="title_signup_page">Lengkapi data dirimu di bawah ini ya</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="message_welcome_page">Want to learn Android, iOS, Machine Learning, Cloud, Front-End, Back-End, and other IT fields? Learn with Dicoding!</string>
+    <string name="title_welcome_page">Welcome to Dicoding!</string>
+    <string name="title_signup_page">Fill in your details below</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="message_login_page">Masukkan dulu datamu ya</string>
-    <string name="title_login_page">Sudah siap untuk upgrade skill?</string>
-    <string name="name">Nama</string>
-    <string name="message_main_page">Selamat Belajar di Dicoding.</string>
-    <string name="greeting">Halo %1$s,</string>
-    <string name="logout">Keluar</string>
-    <string name="password_hint">Masukkan Password Anda</string>
-    <string name="password_too_short">Password tidak boleh kurang dari 8 karakter</string>
-    <string name="deskripsi">Deskripsi story</string>
-    <string name="story_name">Nama Story</string>
-
+    <string name="message_login_page">Please enter your data first</string>
+    <string name="title_login_page">Ready to upgrade your skills?</string>
+    <string name="name">Name</string>
+    <string name="message_main_page">Happy Learning at Dicoding.</string>
+    <string name="greeting">Hello %1$s,</string>
+    <string name="logout">Logout</string>
+    <string name="password_hint">Enter Your Password</string>
+    <string name="password_too_short">Password must be at least 8 characters long</string>
+    <string name="deskripsi">Story Description</string>
+    <string name="story_name">Story Name</string>
+    <string name="description">Description</string>
+    <string name="upload">Upload</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="enter_your_password">Enter Your Password</string>
+    <string name="setting">setting</string>
+    <string name="current_location">Include current location</string>
+    <string name="location">Location</string>
 </resources>

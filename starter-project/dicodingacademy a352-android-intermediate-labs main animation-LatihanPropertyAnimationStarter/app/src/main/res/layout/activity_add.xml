@@ -1,67 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+
     android:background="#F9F6FF">
 
-    <!-- ImageView for the image -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/addToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Add Story"
+        app:titleTextColor="@android:color/white" />
+
+
     <ImageView
         android:id="@+id/previewImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
+        android:importantForAccessibility="no"
+        android:layout_marginTop="25dp"
         android:scaleType="centerCrop"
         android:background="@drawable/placeholder" />
 
-    <!-- Horizontal Layout for Camera and Gallery Buttons -->
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="16dp"
         android:layout_marginBottom="16dp">
 
         <Button
             android:id="@+id/btn_camera"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="Camera"
+            android:text="@string/camera"
             android:backgroundTint="#7C4DFF"
             android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btn_gallery"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Gallery"
+            android:text="@string/gallery"
             android:backgroundTint="#7C4DFF"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <!-- EditText for description -->
     <EditText
-        android:id="@+id/editText_description"
+        android:id="@+id/ed_add_description"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginBottom="16dp"
-        android:hint="Description"
+        android:layout_margin="16dp"
+        android:hint="@string/description"
         android:gravity="top"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
         android:padding="8dp"
         android:background="@android:drawable/edit_text" />
 
-    <!-- Upload Button -->
+    <CheckBox
+        android:id="@+id/checkbox_add_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_location"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#000000" />
+
+
     <Button
-        android:id="@+id/btn_upload"
+        android:id="@+id/button_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload"
+        android:text="@string/upload"
         android:backgroundTint="#7C4DFF"
+        android:layout_margin="16dp"
         android:textColor="#FFFFFF" />
     <ProgressBar
         android:id="@+id/progressIndicator"

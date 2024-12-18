@@ -1,33 +1,55 @@
 package com.dicoding.picodiploma.loginwithanimation.view.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.dicoding.picodiploma.loginwithanimation.data.Result
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.dicoding.picodiploma.loginwithanimation.data.UserRepository
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserModel
 import com.dicoding.picodiploma.loginwithanimation.data.response.StoryItem
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 
-class MainViewModel(private val repository: UserRepository) : ViewModel() {
-    private val _stories = MutableLiveData<Result<List<StoryItem>>>()
+class MainViewModel(
+    private val repository: UserRepository
+) : ViewModel() {
+
     private val _logoutStatus = MutableLiveData<Boolean>()
-    val stories: LiveData<Result<List<StoryItem>>> = _stories
+    val logoutStatus: LiveData<Boolean> get() = _logoutStatus
+
+    private val _storiesPaging = MutableLiveData<PagingData<StoryItem>>()
+    val storiesPaging: LiveData<PagingData<StoryItem>> get() = _storiesPaging
+
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }
 
-    fun getStories() {
+    fun fetchStoriesPaging() {
+        fun fetchStoriesPaging() {
+            viewModelScope.launch {
+                repository.getStoriesPaging()
+                    .cachedIn(viewModelScope)
+                    .collectLatest { pagingData ->
+                        _storiesPaging.postValue(pagingData)
+                    }
+            }
+        }
+
         viewModelScope.launch {
             try {
-                repository.getStories().collect { result ->
-                    _stories.postValue(result)
-                }
+                repository.getStoriesPaging()
+                        .cachedIn(viewModelScope)
+                        .collectLatest { pagingData ->
+                            _storiesPaging.postValue(pagingData)
+                            println("Data berhasil dimuat: ${pagingData}")
+                        }
+
             } catch (e: Exception) {
-                Log.e("VIEW_MODEL_ERROR", e.message ?: "Error in ViewModel")
+                println("Error saat memuat data: ${e.message}")
             }
         }
     }
@@ -35,8 +57,7 @@ class MainViewModel(private val repository: UserRepository) : ViewModel() {
     fun logout() {
         viewModelScope.launch {
             repository.logout()
-            _logoutStatus.postValue(true) // Perbarui LiveData untuk mengindikasikan logout berhasil
+            _logoutStatus.postValue(true)
         }
     }
-
 }

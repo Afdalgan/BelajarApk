@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">アニメーション付きログイン</string>
+    <string name="signup">サインアップ</string>
+    <string name="login">ログイン</string>
+    <string name="message_welcome_page">Android、iOS、機械学習、クラウド、フロントエンド、バックエンド、その他のIT分野を学びたいですか？Dicodingで学びましょう！</string>
+    <string name="title_welcome_page">Dicodingへようこそ！</string>
+    <string name="title_signup_page">以下にあなたの詳細を入力してください</string>
+    <string name="email">メール</string>
+    <string name="password">パスワード</string>
+    <string name="message_login_page">最初にデータを入力してください</string>
+    <string name="title_login_page">スキルを向上させる準備はできていますか？</string>
+    <string name="name">名前</string>
+    <string name="message_main_page">Dicodingで楽しく学びましょう。</string>
+    <string name="greeting">こんにちは %1$s さん,</string>
+    <string name="logout">ログアウト</string>
+    <string name="password_hint">パスワードを入力してください</string>
+    <string name="password_too_short">パスワードは8文字以上でなければなりません</string>
+    <string name="deskripsi">ストーリーの説明</string>
+    <string name="story_name">ストーリー名</string>
+    <string name="description">説明</string>
+    <string name="upload">アップロード</string>
+    <string name="gallery">ギャラリー</string>
+    <string name="camera">カメラ</string>
+    <string name="enter_your_email">メールアドレスを入力してください</string>
+    <string name="enter_your_password">パスワードを入力してください</string>
+    <string name="setting">設定</string>
+    <string name="current_location">現在の場所を含む</string>
+    <string name="location">場所</string>
+
+</resources>

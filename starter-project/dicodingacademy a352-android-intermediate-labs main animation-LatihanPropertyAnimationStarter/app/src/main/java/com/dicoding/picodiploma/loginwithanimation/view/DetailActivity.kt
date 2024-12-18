@@ -15,11 +15,19 @@ class DetailActivity : AppCompatActivity() {
         @Suppress("DEPRECATION") val story = intent.getParcelableExtra<StoryItem>("story_item")
 
         story?.let {
-            findViewById<TextView>(R.id.tv_item_name).text = it.name
+            findViewById<TextView>(R.id.tv_detail_name).text = it.name
             findViewById<TextView>(R.id.tv_detail_description).text = it.description
+
+            val locationText = if (it.lat != null && it.lon != null) {
+                "Latitude: ${it.lat}, Longitude: ${it.lon}"
+            } else {
+                "Location not available"
+            }
+            findViewById<TextView>(R.id.tv_detail_location).text = locationText
+
             Glide.with(this)
                 .load(it.photoUrl)
-                .into(findViewById(R.id.iv_item_photo))
+                .into(findViewById(R.id.iv_detail_photo))
         }
     }
 }

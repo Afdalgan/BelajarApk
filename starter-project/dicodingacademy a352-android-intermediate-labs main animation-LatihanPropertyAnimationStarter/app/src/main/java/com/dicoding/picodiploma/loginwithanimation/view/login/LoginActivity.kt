@@ -51,16 +51,20 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.edLoginPassword.text.toString().trim()
 
             if (email.isEmpty()) {
-                binding.edLoginEmail.error = "Email tidak boleh kosong"
+                binding.edLoginEmail.error = "Email must not be empty"
                 return@setOnClickListener
             }
 
             if (password.isEmpty()) {
-                binding.edLoginPassword.error = "Password tidak boleh kosong"
+                binding.edLoginPassword.error = "Password must not be empty"
                 return@setOnClickListener
             }
 
+            binding.progressBar.visibility = android.view.View.VISIBLE
+
             viewModel.login(email, password).observe(this) { result ->
+                binding.progressBar.visibility = android.view.View.GONE
+
                 result.onSuccess { response ->
                     if (response.error == false) {
                         val loginResult = response.loginResult
@@ -72,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                             )
                             viewModel.saveSession(user)
 
-                            Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Login success!", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this, MainActivity::class.java)
                             intent.flags =
                                 Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

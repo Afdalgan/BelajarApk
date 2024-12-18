@@ -1,6 +1,7 @@
 package com.dicoding.picodiploma.loginwithanimation.view.signup
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -29,22 +30,29 @@ class SignupActivity : AppCompatActivity() {
             val password = binding.edRegisterPassword.text.toString()
 
             if (name.isNotBlank() && email.isNotBlank() && password.isNotBlank()) {
+                showLoading(true)
                 viewModel.register(name, email, password).observe(this) { result ->
                     result.onSuccess { response ->
+                        showLoading(false)
                         if (!response.error!!) {
-                            Toast.makeText(this, "Register berhasil: ${response.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Register success: ${response.message}", Toast.LENGTH_SHORT).show()
                             finish()
                         } else {
-                            Toast.makeText(this, "Gagal: ${response.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Failed: ${response.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
-                    result.onFailure {
-                        Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_SHORT).show()
+                    result.onFailure { error ->
+                        showLoading(false)
+                        Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
-                Toast.makeText(this, "Harap isi semua kolom", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

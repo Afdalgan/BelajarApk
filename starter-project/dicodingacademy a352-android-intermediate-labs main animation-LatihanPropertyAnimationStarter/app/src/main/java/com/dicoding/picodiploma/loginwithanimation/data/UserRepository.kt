@@ -1,36 +1,40 @@
 package com.dicoding.picodiploma.loginwithanimation.data
 
-import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserModel
 import com.dicoding.picodiploma.loginwithanimation.data.pref.UserPreference
 import com.dicoding.picodiploma.loginwithanimation.data.response.LoginResponse
 import com.dicoding.picodiploma.loginwithanimation.data.response.RegisterResponse
+import com.dicoding.picodiploma.loginwithanimation.data.response.StoriesResponse
 import com.dicoding.picodiploma.loginwithanimation.data.response.StoryItem
-import com.dicoding.picodiploma.loginwithanimation.data.response.UploudResponse
+import com.dicoding.picodiploma.loginwithanimation.data.response.UploadResponse
 import com.dicoding.picodiploma.loginwithanimation.data.retrofit.ApiService
+import com.dicoding.picodiploma.loginwithanimation.view.story.StoriesPagingSource
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
-import retrofit2.Response
 
 
-class UserRepository private constructor(
+class UserRepository(
     private val userPreference: UserPreference,
     private val apiService: ApiService
 ) {
-    fun getStories(): Flow<Result<List<StoryItem>>> = flow {
-        emit(Result.Loading)
-        try {
-            val response = apiService.getStories() // Hapus parameter token
-            emit(Result.Success(response.listStory))
-        } catch (e: Exception) {
-            Log.e("API_ERROR", e.message ?: "Unknown error")
-            emit(Result.Error(e.message ?: "An unknown error occurred"))
-        }
+
+    fun getStoriesPaging(): Flow<PagingData<StoryItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                StoriesPagingSource(apiService)
+            }
+        ).flow
     }
 
     suspend fun registerUser(name: String, email: String, password: String): RegisterResponse {
@@ -53,27 +57,37 @@ class UserRepository private constructor(
         userPreference.logout()
     }
 
+    suspend fun getStoriesWithLocation(): StoriesResponse {
+        return apiService.getStoriesWithLocation()
+    }
+
+
     suspend fun uploadImage(
-        token: String,
         imageFile: File,
         description: String,
-    ): Result<UploudResponse> {
+        lat: Double? = null,
+        lon: Double? = null
+    ): Result<UploadResponse> {
         return try {
             val requestFile = imageFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("photo", imageFile.name, requestFile)
             val descriptionBody = description.toRequestBody("text/plain".toMediaTypeOrNull())
 
-            val response = apiService.uploadImage(
-                "Bearer $token",
+            val latBody = lat?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
+            val lonBody = lon?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
+
+            val response = apiService.uploadImageWithLocation(
                 body,
-                descriptionBody
+                descriptionBody,
+                latBody,
+                lonBody
             )
             Result.Success(response)
         } catch (e: Exception) {
-            Log.e("UploadError", "An error occurred", e)
-            Result.Error("An error occurred: ${e.localizedMessage}")
+            Result.Error("Upload failed: ${e.localizedMessage}")
         }
     }
+
 
 
     companion object {

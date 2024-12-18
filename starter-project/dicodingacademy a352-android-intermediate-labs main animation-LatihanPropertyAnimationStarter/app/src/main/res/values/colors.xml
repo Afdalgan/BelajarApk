@@ -3,7 +3,8 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="primary_color">#FFC345</color>
+    <color name="secondary_color">#FF5722</color> <!-- Warna tambahan untuk secondary -->
     <color name="navy">#2D3D4F</color>
 
 </resources>

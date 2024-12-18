@@ -2,22 +2,22 @@ package com.dicoding.picodiploma.loginwithanimation.view.welcome
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityWelcomeBinding
 import com.dicoding.picodiploma.loginwithanimation.view.login.LoginActivity
 import com.dicoding.picodiploma.loginwithanimation.view.signup.SignupActivity
-import com.google.android.material.animation.AnimatorSetCompat.playTogether
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
-
+    private val viewModel: WelcomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,8 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupView()
-        setupAction()
+        setupObservers()
+        setupActions()
         playAnimation()
     }
 
@@ -42,13 +43,29 @@ class WelcomeActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    private fun setupAction() {
+    private fun setupObservers() {
+        viewModel.navigateToLogin.observe(this, Observer { shouldNavigate ->
+            if (shouldNavigate) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                viewModel.doneNavigating()
+            }
+        })
+
+        viewModel.navigateToSignup.observe(this, Observer { shouldNavigate ->
+            if (shouldNavigate) {
+                startActivity(Intent(this, SignupActivity::class.java))
+                viewModel.doneNavigating()
+            }
+        })
+    }
+
+    private fun setupActions() {
         binding.loginButton.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            viewModel.onLoginClicked()
         }
 
         binding.signupButton.setOnClickListener {
-            startActivity(Intent(this, SignupActivity::class.java))
+            viewModel.onSignupClicked()
         }
     }
 

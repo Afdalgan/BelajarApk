@@ -7,7 +7,7 @@
     tools:context=".view.DetailActivity">
 
     <ImageView
-        android:id="@+id/iv_item_photo"
+        android:id="@+id/iv_detail_photo"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginTop="16dp"
@@ -18,7 +18,7 @@
         android:transitionName="profile" />
 
     <TextView
-        android:id="@+id/tv_item_name"
+        android:id="@+id/tv_detail_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name"
@@ -26,7 +26,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_item_photo"
+        app:layout_constraintTop_toBottomOf="@id/iv_detail_photo"
         android:layout_marginTop="16dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
@@ -40,10 +40,25 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_item_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_name"
         android:layout_marginTop="8dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:transitionName="description" />
+
+    <TextView
+        android:id="@+id/tv_detail_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_description"
+        android:layout_marginTop="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:transitionName="location" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

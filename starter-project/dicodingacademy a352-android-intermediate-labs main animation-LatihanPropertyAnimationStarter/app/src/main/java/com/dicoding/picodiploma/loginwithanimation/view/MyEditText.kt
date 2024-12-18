@@ -1,12 +1,10 @@
-
 package com.dicoding.picodiploma.loginwithanimation.view
 
 import android.content.Context
-import android.graphics.Canvas
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.view.View
+import android.util.Patterns
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -17,27 +15,31 @@ class MyEditText(context: Context, attrs: AttributeSet) : TextInputEditText(cont
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                validatePassword(s)
+                if (hint == "Enter Your Email") {
+                    validateEmail(s)
+                } else {
+                    validatePassword(s)
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
     }
-
-    private fun validatePassword(password: CharSequence?) {
+    private fun validateEmail(email: CharSequence?) {
         val parentLayout = parent.parent as? TextInputLayout
-        if (!password.isNullOrEmpty() && password.length < 8) {
-            parentLayout?.error = "Password tidak boleh kurang dari 8 karakter"
+        if (!email.isNullOrEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            parentLayout?.error = "Invalid email format"
         } else {
             parentLayout?.error = null
         }
     }
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        hint = "Masukkan Password Anda"
-        textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+    private fun validatePassword(password: CharSequence?) {
+        val parentLayout = parent.parent as? TextInputLayout
+        if (!password.isNullOrEmpty() && password.length < 8) {
+            parentLayout?.error = "Password cannot be less than 8 characters"
+        } else {
+            parentLayout?.error = null
+        }
     }
 }
-
-

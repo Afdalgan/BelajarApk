@@ -1,5 +1,8 @@
 package com.dicoding.picodiploma.loginwithanimation.data.retrofit
 
+import com.dicoding.picodiploma.loginwithanimation.data.pref.UserPreference
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,12 +13,15 @@ class ApiConfig {
     companion object {
         private const val BASE_URL = "https://story-api.dicoding.dev/v1/"
 
-        fun getApiService(token: String): ApiService {
+        fun getApiService(userPreference: UserPreference): ApiService {
             val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val authInterceptor = Interceptor { chain ->
+                val token = runBlocking {
+                    userPreference.getSession().firstOrNull()?.token ?: ""
+                }
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "Bearer $token") // Token ditambahkan di sini saja
+                    .addHeader("Authorization", "Bearer $token")
                     .build()
                 chain.proceed(requestHeaders)
             }
@@ -32,4 +38,5 @@ class ApiConfig {
         }
     }
 }
+
 
